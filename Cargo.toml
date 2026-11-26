@@ -1,0 +1,30 @@
+[package]
+name = "mr"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.88"
+description = "Terminal markdown renderer with mouse support and inline image rendering"
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/vincenthz/mr"
+keywords = ["markdown", "terminal", "tui", "viewer", "ratatui"]
+categories = ["command-line-utilities", "text-processing"]
+readme = "README.md"
+
+[lib]
+name = "mr"
+
+[[bin]]
+name = "mr"
+path = "src/main.rs"
+
+[dependencies]
+crossterm = "0.29.0"
+image = { version = "0.25.10", default-features = false, features = ["png", "jpeg", "gif", "webp", "bmp"] }
+pulldown-cmark = "0.13.6"
+ratatui = "0.30.2"
+ratatui-image = { version = "11.1.0", default-features = false, features = ["crossterm", "image-defaults"] }
+unicode-width = "0.2.3"
+
+[profile.release]
+lto = "thin"
+strip = true
